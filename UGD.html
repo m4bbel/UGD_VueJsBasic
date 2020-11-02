@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGD</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>Tebak Angka 1-10 :  </h2>
+        <input v-model="number" placeholder="tebak gan"/>
+
+        <button @click="submit">submit</button>
+
+
+    </div>
+    
+    <div class="footer">
+        <p> {{saya.nama}} / {{saya.NPM}} / {{saya.kelas}}</p>
+      </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            saya: {
+             nama: "Alvin Bima",
+             NPM : 180709854,
+             kelas: "B",
+             input : 0,
+             random : 3,          
+            },
+        },
+        methods: {
+            submit(min,max){
+                return Math.floor(Math.random() * (max-min + 1)) + min;
+            },
+            message(){
+                if (this.input == this.random) {
+                    this.random = this.submit(1, 10);
+                    return 'You got it right!';
+                } else {
+                    this.randomNumber = this.getRandomNumber(1, 10);
+                    return 'Try again!';
+                }
+            }
+        },
+    });
+</script>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: rgb(83, 78, 78);
+        text-align: center;
+    }
+</style>
+</html>
